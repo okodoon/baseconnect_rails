@@ -47,7 +47,8 @@ class PostsController < ApplicationController
         if post.update_attributes(post_params)
             redirect_to post_path(post)
         else
-            render 'edit'
+            redirect_to edit_post_path(post)
+            flash[:error] = "タイトルと内容を記入しましょう"
         end
     end
 
