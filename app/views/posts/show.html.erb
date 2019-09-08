@@ -1,28 +1,8 @@
-<!DOCTYPE html>
-<html>
-<head lang="ja">
-    <meta charset="UTF-8">
-    <title>Rails Camp Blog</title>
-    <link rel="stylesheet" href="style.css" type="text/css" media="screen">
-</head>
-<body>
-
-<header>
-    <p id="logo"><a href="">RailsCamp<span>Blog</span></a></p>
-    <nav>
-        <ul>
-            <li><a href="">トップ</a></li>
-            <li><a href="">新規投稿</a></li>
-            <div class="clear"></div>
-        </ul>
-    </nav>
-    <div class="clear"></div>
-</header>
-
+<%= render :partial => "header" %>
 
 <div id="title">
     <div>
-        <p><%= "#{@post.created_at.to_date} / 書いた人 #{@post.user.name}" %></p>
+        <p><%= "#{@post.created_at.to_date} / 書いた人: #{@post.user.name}" %></p>
         <h1><%= @post.title %></h1>
     </div>
 </div>
@@ -46,11 +26,4 @@
     <div class="clear"></div>
 </div>
 
-<footer>
-    <div id="footer_inner">
-        <p>Copyright RailsCamp 2015 All Rights Reserved</p>
-    </div>
-</footer>
-
-</body>
-</html>
+<%= render :partial => "footer" %>
