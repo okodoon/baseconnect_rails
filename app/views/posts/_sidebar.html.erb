@@ -1,0 +1,15 @@
+    <div id="sidebar">
+        
+        <h2>★PV数ランキング</h2>
+        <ul>
+            <% ranking.each do |rank| %>
+            <li>
+                <% post = Post.find_by(title: rank.first) %>
+                <%= link_to rank.first, post_path(post) %>
+                <span>
+                    <%= " (#{rank.last.to_i.floor}PV)" %>
+                </span>
+            </li>
+            <% end %>
+        </ul>
+    </div>

@@ -1,10 +1,13 @@
 class PostsController < ApplicationController
     def index
         @posts = Post.all
+        @ranking = REDIS.zrevrange "ranking", 0, 10, withscores: true
     end
     
     def show
         @post = Post.find(params[:id])
+        @ranking = REDIS.zrevrange "ranking", 0, 10, withscores: true
+        REDIS.zincrby "ranking", 1, "#{@post.title}"
     end
 
     def new
