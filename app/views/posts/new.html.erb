@@ -1,0 +1,7 @@
+<%= form_for @post do |form| %>
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+    <%= form.label :description %>
+    <%= form.text_area :description %>
+    <%= submit_tag %>
+<% end %>
