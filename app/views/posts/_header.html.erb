@@ -2,9 +2,6 @@
 
 <header>
     <p id="logo"><a href="">RailsCamp<span>Blog</span></a></p>
-    <% if user_signed_in? %>
-        <%= current_user.email %>
-    <% end %>
     <nav>
         <ul>
             <%= link_to "トップ", root_path %>

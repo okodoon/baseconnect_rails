@@ -38,7 +38,26 @@
      text-decoration: none;
  }
  
- 
+ .alert {
+     background-color: #ee82ee;
+     font-size: 15px;
+     text-align: center;
+     padding: 20px 0;
+     color: white;
+ }
+
+ /* フォーム
+ ------------------------------------------------------------*/ 
+ .form {
+    list-style: none;
+    width: 600px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 50px;
+ }
+.form-item {
+    margin-bottom: 20px;
+} 
  /* ヘッダー
  ------------------------------------------------------------*/
  

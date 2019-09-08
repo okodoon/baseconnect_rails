@@ -23,13 +23,17 @@ class PostsController < ApplicationController
 
     def destroy
         post = Post.find(params[:id])
+        if post.user != current_user
+            redirect_to root_path
+            flash[:warning] = "Not Yours"
+        end
         post.destroy
         redirect_to root_path
     end
 
     def edit
         @post = Post.find(params[:id])
-        if @post.user == current_user
+        if @post.user != current_user
             redirect_to root_path
             flash[:warning] = "Not Yours"
         end
