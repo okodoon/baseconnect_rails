@@ -29,6 +29,10 @@ class PostsController < ApplicationController
 
     def edit
         @post = Post.find(params[:id])
+        if @post.user == current_user
+            redirect_to root_path
+            flash[:warning] = "Not Yours"
+        end
     end
 
     def update
