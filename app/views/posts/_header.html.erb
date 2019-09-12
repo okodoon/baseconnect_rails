@@ -1,7 +1,7 @@
 <%= render 'layouts/flash_messages' %>
 
 <header>
-    <p id="logo"><a href="">RailsCamp<span>Blog</span></a></p>
+    <p id="logo"><%= link_to(root_path) do %>RailsCamp<span>Blog</span><% end %></p>
     <nav>
         <ul>
             <%= link_to "トップ", root_path %>

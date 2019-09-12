@@ -1,13 +1,13 @@
 class PostsController < ApplicationController
     def index
         @posts = Post.all
-        @ranking = REDIS.zrevrange "ranking", 0, 10, withscores: true
+        @ranking = REDIS.zrevrange "ranking", 0, 2, withscores: true
     end
     
     def show
         @post = Post.find(params[:id])
-        @ranking = REDIS.zrevrange "ranking", 0, 10, withscores: true
         REDIS.zincrby "ranking", 1, "#{@post.title}"
+        @ranking = REDIS.zrevrange "ranking", 0, 2, withscores: true
     end
 
     def new
@@ -29,8 +29,10 @@ class PostsController < ApplicationController
         if post.user != current_user
             redirect_to root_path
             flash[:warning] = "Not Yours"
+            return
         end
-        post.destroy
+        post.delete
+        REDIS.zrem('ranking', post.title)
         redirect_to root_path
     end
 
